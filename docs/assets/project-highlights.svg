@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" role="img" aria-labelledby="title desc">
+  <title id="title">Project highlights</title>
+  <desc id="desc">Four cards show 8 relational database tables, 15 analytical SQL queries, 2 application interfaces, and 4 interactive Flask analytics reports.</desc>
+  <style>
+    .card { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1; }
+    .value { fill: #0969da; font: 700 36px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .label { fill: #24292f; font: 600 16px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .detail { fill: #57606a; font: 400 13px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #161b22; stroke: #30363d; }
+      .value { fill: #58a6ff; }
+      .label { fill: #f0f6fc; }
+      .detail { fill: #8b949e; }
+    }
+  </style>
+  <g transform="translate(10 10)">
+    <rect class="card" width="360" height="110" rx="10" />
+    <text class="value" x="24" y="50">8</text>
+    <text class="label" x="82" y="42">Relational tables</text>
+    <text class="detail" x="82" y="67">Normalized MySQL design</text>
+  </g>
+  <g transform="translate(390 10)">
+    <rect class="card" width="360" height="110" rx="10" />
+    <text class="value" x="24" y="50">15</text>
+    <text class="label" x="92" y="42">Analytical SQL queries</text>
+    <text class="detail" x="92" y="67">Joins, CTEs, OLAP, windows</text>
+  </g>
+  <g transform="translate(10 140)">
+    <rect class="card" width="360" height="110" rx="10" />
+    <text class="value" x="24" y="50">2</text>
+    <text class="label" x="82" y="42">Application interfaces</text>
+    <text class="detail" x="82" y="67">Python CLI and Flask</text>
+  </g>
+  <g transform="translate(390 140)">
+    <rect class="card" width="360" height="110" rx="10" />
+    <text class="value" x="24" y="50">4</text>
+    <text class="label" x="82" y="42">Flask analytics reports</text>
+    <text class="detail" x="82" y="67">Interactive filters and charts</text>
+  </g>
+</svg>

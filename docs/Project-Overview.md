@@ -6,6 +6,15 @@ This project successfully developed one IRS-inspired data system through five co
 
 The final application is a local educational prototype built with synthetic data. It is not an IRS production system, and several rules described in the design are checked by application logic or review queries rather than fully enforced by database constraints.
 
+### Project highlights (Markdown fallback)
+
+| Metric | Verified value |
+|---|---:|
+| Relational database tables | 8 |
+| Analytical SQL queries | 15 |
+| Application interfaces | 2, Python CLI and Flask web app |
+| Interactive Flask analytics reports | 4 |
+
 ## Project background and objective
 
 The project was completed for CS 727, Relational Database Implementation and Applications. Its objective was to build an application with a relational database backend, starting from a real-world domain and progressing from design to implementation, querying, and an end-user interface.
