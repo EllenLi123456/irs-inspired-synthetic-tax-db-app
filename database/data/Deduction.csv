@@ -1,0 +1,56 @@
+DeductionID,ReturnID,DeductionType,Amount
+3001,1001,Medical Expenses,12790.49
+3002,1001,Standard Deduction,4790.73
+3003,1001,State and Local Taxes,6218.78
+3004,1002,Charitable Contributions,7132.96
+3005,1002,Standard Deduction,2105.35
+3006,1002,Medical Expenses,1164.69
+3007,1003,Medical Expenses,3302.25
+3008,1003,Charitable Contributions,438.03
+3009,1003,State and Local Taxes,1241.72
+3010,1004,State and Local Taxes,1888.0
+3011,1005,Medical Expenses,20337.22
+3012,1005,Standard Deduction,2993.71
+3013,1005,Mortgage Interest,6003.07
+3014,1006,State and Local Taxes,7813.65
+3015,1006,Charitable Contributions,5695.35
+3016,1007,Standard Deduction,11324.63
+3017,1007,Medical Expenses,11475.37
+3018,1008,Standard Deduction,8829.35
+3019,1008,Charitable Contributions,2995.4
+3020,1008,Medical Expenses,2228.25
+3021,1009,Medical Expenses,805.9
+3022,1009,State and Local Taxes,213.94
+3023,1009,Standard Deduction,493.16
+3024,1010,Medical Expenses,1274.57
+3025,1010,State and Local Taxes,1918.43
+3026,1011,Medical Expenses,26190.0
+3027,1012,Standard Deduction,17608.0
+3028,1013,Standard Deduction,10285.0
+3029,1014,Charitable Contributions,26495.0
+3030,1015,Standard Deduction,26189.0
+3031,1016,Medical Expenses,5294.74
+3032,1016,Charitable Contributions,5374.26
+3033,1017,State and Local Taxes,4213.35
+3034,1017,Charitable Contributions,1437.17
+3035,1017,Medical Expenses,1660.48
+3036,1018,Medical Expenses,12727.8
+3037,1018,Charitable Contributions,2653.49
+3038,1018,State and Local Taxes,9722.71
+3039,1019,Charitable Contributions,11469.55
+3040,1019,Standard Deduction,3890.32
+3041,1019,Medical Expenses,12891.13
+3042,1020,Charitable Contributions,6695.0
+3043,1021,State and Local Taxes,6919.31
+3044,1021,Standard Deduction,2571.95
+3045,1021,Charitable Contributions,2595.74
+3046,1022,State and Local Taxes,1614.12
+3047,1022,Medical Expenses,2303.55
+3048,1022,Charitable Contributions,2369.33
+3049,1023,State and Local Taxes,3728.0
+3050,1024,Charitable Contributions,7548.55
+3051,1024,Mortgage Interest,2154.18
+3052,1024,Medical Expenses,4128.27
+3053,1025,State and Local Taxes,9128.59
+3054,1025,Standard Deduction,1980.33
+3055,1025,Charitable Contributions,2027.08

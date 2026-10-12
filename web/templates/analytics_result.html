@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Main navigation -->
+    <nav class="top-nav">
+
+        <div class="app-title">
+            IRS Database Application
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/taxpayers">Taxpayers</a>
+            <a href="/taxreturns">Tax Returns</a>
+
+            <span class="nav-wip">Income (WIP)</span>
+            <span class="nav-wip">Deductions (WIP)</span>
+            <span class="nav-wip">Credits (WIP)</span>
+            <span class="nav-wip">Refunds (WIP)</span>
+            <span class="nav-wip">Balance Due (WIP)</span>
+            <span class="nav-wip">Forms (WIP)</span>
+
+            <a href="/analytics">Analytics</a>
+        </div>
+
+    </nav>
+
+
+    <div class="page-container">
+
+        <h1>{{ title }}</h1>
+
+
+        <!-- Business Question -->
+        <p>
+            <strong>Question:</strong>
+            {{ question }}
+        </p>
+
+
+        <!-- SQL Concept -->
+        <p>
+            <strong>SQL concept:</strong>
+            {{ sql_concept }}
+        </p>
+
+
+        <!-- Complex SQL -->
+        {% if sql_query %}
+
+            <h3>Complex SQL Used</h3>
+
+            <pre style="
+                background-color: #f4f4f4;
+                padding: 15px;
+                border-radius: 6px;
+                overflow-x: auto;
+                white-space: pre-wrap;
+            ">{{ sql_query }}</pre>
+
+        {% endif %}
+
+
+        <!-- Q1: Tax Year Filter -->
+        {% if show_year_filter %}
+
+            <form method="GET"
+                  action="/analytics/refund-balance"
+                  class="filter-form">
+
+                <label for="tax_year">
+                    <strong>Tax Year:</strong>
+                </label>
+
+                <select name="tax_year"
+                        id="tax_year">
+
+                    <option value="">
+                        All Years
+                    </option>
+
+                    <option value="2023"
+                        {% if selected_tax_year == "2023" %}
+                            selected
+                        {% endif %}>
+                        2023
+                    </option>
+
+                    <option value="2024"
+                        {% if selected_tax_year == "2024" %}
+                            selected
+                        {% endif %}>
+                        2024
+                    </option>
+
+                    <option value="2025"
+                        {% if selected_tax_year == "2025" %}
+                            selected
+                        {% endif %}>
+                        2025
+                    </option>
+
+                    <option value="2026"
+                        {% if selected_tax_year == "2026" %}
+                            selected
+                        {% endif %}>
+                        2026
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Filter
+                </button>
+
+                <a href="/analytics/refund-balance">
+                    <button type="button">
+                        Reset
+                    </button>
+                </a>
+
+            </form>
+
+            <br>
+
+        {% endif %}
+
+
+        <!-- Q2: One Tax Year + Multiple Filing Statuses -->
+        {% if show_q2_filters %}
+
+            <form method="GET"
+                  action="/analytics/high-income"
+                  class="filter-form">
+
+                <div>
+
+                    <label for="q2_tax_year">
+                        <strong>Tax Year:</strong>
+                    </label>
+
+                    <select name="tax_year"
+                            id="q2_tax_year">
+
+                        <option value="">
+                            All Years
+                        </option>
+
+                        <option value="2023"
+                            {% if selected_tax_year == "2023" %}
+                                selected
+                            {% endif %}>
+                            2023
+                        </option>
+
+                        <option value="2024"
+                            {% if selected_tax_year == "2024" %}
+                                selected
+                            {% endif %}>
+                            2024
+                        </option>
+
+                        <option value="2025"
+                            {% if selected_tax_year == "2025" %}
+                                selected
+                            {% endif %}>
+                            2025
+                        </option>
+
+                        <option value="2026"
+                            {% if selected_tax_year == "2026" %}
+                                selected
+                            {% endif %}>
+                            2026
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <br>
+
+
+                <div>
+
+                    <strong>Filing Status:</strong>
+
+                    <label>
+                        <input type="checkbox"
+                               name="filing_status"
+                               value="Single"
+                               {% if "Single" in selected_filing_statuses %}
+                                   checked
+                               {% endif %}>
+                        Single
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                               name="filing_status"
+                               value="MFJ"
+                               {% if "MFJ" in selected_filing_statuses %}
+                                   checked
+                               {% endif %}>
+                        MFJ
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                               name="filing_status"
+                               value="MFS"
+                               {% if "MFS" in selected_filing_statuses %}
+                                   checked
+                               {% endif %}>
+                        MFS
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                               name="filing_status"
+                               value="HOH"
+                               {% if "HOH" in selected_filing_statuses %}
+                                   checked
+                               {% endif %}>
+                        HOH
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                               name="filing_status"
+                               value="QSS"
+                               {% if "QSS" in selected_filing_statuses %}
+                                   checked
+                               {% endif %}>
+                        QSS
+                    </label>
+
+                </div>
+
+
+                <br>
+
+
+                <button type="submit">
+                    Filter
+                </button>
+
+
+                <a href="/analytics/high-income">
+                    <button type="button">
+                        Reset
+                    </button>
+                </a>
+
+            </form>
+
+            <br>
+
+        {% endif %}
+        
+        <!-- Q3: Tax Year Filter -->
+        {% if show_q3_year_filter %}
+
+            <form method="GET"
+                action="/analytics/deduction-quartiles"
+                class="filter-form">
+
+                <label for="q3_tax_year">
+                    <strong>Tax Year:</strong>
+                </label>
+
+                <select name="tax_year"
+                        id="q3_tax_year">
+
+                    <option value="">
+                        All Years
+                    </option>
+
+                    <option value="2023"
+                        {% if selected_tax_year == "2023" %}
+                            selected
+                        {% endif %}>
+                        2023
+                    </option>
+
+                    <option value="2024"
+                        {% if selected_tax_year == "2024" %}
+                            selected
+                        {% endif %}>
+                        2024
+                    </option>
+
+                    <option value="2025"
+                        {% if selected_tax_year == "2025" %}
+                            selected
+                        {% endif %}>
+                        2025
+                    </option>
+
+                    <option value="2026"
+                        {% if selected_tax_year == "2026" %}
+                            selected
+                        {% endif %}>
+                        2026
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Filter
+                </button>
+
+                <a href="/analytics/deduction-quartiles">
+                    <button type="button">
+                        Reset
+                    </button>
+                </a>
+
+            </form>
+
+            <br>
+
+        {% endif %}
+
+        <!-- Q4: One Tax Year + Multiple Filing Statuses -->
+        {% if show_q4_filters %}
+
+            <form method="GET"
+                action="/analytics/filing-status-trends"
+                class="filter-form">
+
+                <div>
+
+                    <label for="q4_tax_year">
+                        <strong>Tax Year:</strong>
+                    </label>
+
+                    <select name="tax_year"
+                            id="q4_tax_year">
+
+                        <option value="">
+                            All Years
+                        </option>
+
+                        <option value="2023"
+                            {% if selected_tax_year == "2023" %}
+                                selected
+                            {% endif %}>
+                            2023
+                        </option>
+
+                        <option value="2024"
+                            {% if selected_tax_year == "2024" %}
+                                selected
+                            {% endif %}>
+                            2024
+                        </option>
+
+                        <option value="2025"
+                            {% if selected_tax_year == "2025" %}
+                                selected
+                            {% endif %}>
+                            2025
+                        </option>
+
+                        <option value="2026"
+                            {% if selected_tax_year == "2026" %}
+                                selected
+                            {% endif %}>
+                            2026
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <br>
+
+                <div>
+
+                    <strong>Filing Status:</strong>
+
+                    <label>
+                        <input type="checkbox"
+                            name="filing_status"
+                            value="Single"
+                            {% if "Single" in selected_filing_statuses %}
+                                checked
+                            {% endif %}>
+                        Single
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                            name="filing_status"
+                            value="MFJ"
+                            {% if "MFJ" in selected_filing_statuses %}
+                                checked
+                            {% endif %}>
+                        MFJ
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                            name="filing_status"
+                            value="MFS"
+                            {% if "MFS" in selected_filing_statuses %}
+                                checked
+                            {% endif %}>
+                        MFS
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                            name="filing_status"
+                            value="HOH"
+                            {% if "HOH" in selected_filing_statuses %}
+                                checked
+                            {% endif %}>
+                        HOH
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                            name="filing_status"
+                            value="QSS"
+                            {% if "QSS" in selected_filing_statuses %}
+                                checked
+                            {% endif %}>
+                        QSS
+                    </label>
+
+                </div>
+
+                <br>
+
+                <button type="submit">
+                    Filter
+                </button>
+
+                <a href="/analytics/filing-status-trends">
+                    <button type="button">
+                        Reset
+                    </button>
+                </a>
+
+            </form>
+
+            <br>
+
+        {% endif %}
+
+        <!-- Back Button -->
+        <a href="/analytics">
+            <button type="button">
+                Back to Analytics
+            </button>
+        </a>
+
+
+        <br><br>
+
+
+        <!-- Chart -->
+        {% if chart_type == "pie"
+            or chart_type == "bar"
+            or chart_type == "line" %}
+
+            <div style="
+                max-width: 650px;
+                margin-bottom: 30px;
+            ">
+
+                <canvas id="analyticsChart"></canvas>
+
+            </div>
+
+
+            <script>
+
+                const ctx =
+                    document.getElementById(
+                        'analyticsChart'
+                    );
+
+                new Chart(ctx, {
+
+                    type: '{{ chart_type }}',
+
+                    data: {
+
+                        labels:
+                            {{ chart_labels | tojson }},
+
+                        {% if chart_datasets is defined and chart_datasets %}
+
+                        datasets: [
+                            {% for dataset in chart_datasets %}
+                            {
+                                label: {{ dataset.label | tojson }},
+                                data: {{ dataset.data | tojson }},
+                                spanGaps: true
+                            }{% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ]
+
+                        {% else %}
+
+                        datasets: [{
+                            label: '{{ title }}',
+                            data: {{ chart_values | default([]) | tojson }},
+
+                            {% if chart_colors is defined %}
+                            backgroundColor: {{ chart_colors | tojson }}
+                            {% endif %}
+                        }]
+
+{% endif %}
+
+                    },
+
+                    options: {
+
+                        responsive: true,
+
+                        plugins: {
+
+                            legend: {
+                                position: 'bottom'
+                            }
+
+                        },
+
+                        {% if chart_type == "bar" %}
+
+                        scales: {
+
+                            y: {
+                                beginAtZero: true
+                            }
+
+                        }
+
+                        {% endif %}
+
+                    }
+
+                });
+
+            </script>
+
+        {% endif %}
+
+
+        <!-- Detailed Results -->
+        {% if results %}
+
+            <h3>
+                Detailed Result Table
+            </h3>
+
+            <table>
+
+                <tr>
+
+                    {% for column in results[0].keys() %}
+
+                        <th>
+                            {{ column }}
+                        </th>
+
+                    {% endfor %}
+
+                </tr>
+
+
+                {% for row in results %}
+
+                    <tr>
+
+                        {% for value in row.values() %}
+
+                            <td>
+                                {{ value }}
+                            </td>
+
+                        {% endfor %}
+
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+
+        {% else %}
+
+            <p>
+                No results found.
+            </p>
+
+        {% endif %}
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+USE irs_project_db;
+
+-- Launch the MySQL client from the GitHub-Portfolio repository root with
+-- LOCAL INFILE enabled. These paths are relative to that launch directory.
+LOAD DATA LOCAL INFILE 'database/data/Taxpayer.csv'
+INTO TABLE Taxpayer FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/TaxReturn.csv'
+INTO TABLE TaxReturn FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/IncomeRecord.csv'
+INTO TABLE IncomeRecord FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/Deduction.csv'
+INTO TABLE Deduction FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/TaxCredit.csv'
+INTO TABLE TaxCredit FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/Refund.csv'
+INTO TABLE Refund FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/BalanceDue.csv'
+INTO TABLE BalanceDue FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE 'database/data/TaxForm.csv'
+INTO TABLE TaxForm FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+SELECT 'Taxpayer' AS TableName, COUNT(*) AS RecordCount FROM Taxpayer
+UNION ALL SELECT 'TaxReturn', COUNT(*) FROM TaxReturn
+UNION ALL SELECT 'IncomeRecord', COUNT(*) FROM IncomeRecord
+UNION ALL SELECT 'Deduction', COUNT(*) FROM Deduction
+UNION ALL SELECT 'TaxCredit', COUNT(*) FROM TaxCredit
+UNION ALL SELECT 'Refund', COUNT(*) FROM Refund
+UNION ALL SELECT 'BalanceDue', COUNT(*) FROM BalanceDue
+UNION ALL SELECT 'TaxForm', COUNT(*) FROM TaxForm;

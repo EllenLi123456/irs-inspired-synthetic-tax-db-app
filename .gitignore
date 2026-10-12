@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+database/01_schema_test.sql
+database/02_load_seed_data_test.sql
+database/03_database_features_test.sql

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IRS Database Application</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Main navigation -->
+    <nav class="top-nav">
+
+        <div class="app-title">
+            IRS Database Application
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/taxpayers">
+                Taxpayers
+            </a>
+
+            <a href="/taxreturns">
+                Tax Returns
+            </a>
+
+            <span class="nav-wip">
+                Income (WIP)
+            </span>
+
+            <span class="nav-wip">
+                Deductions (WIP)
+            </span>
+
+            <span class="nav-wip">
+                Credits (WIP)
+            </span>
+
+            <span class="nav-wip">
+                Refunds (WIP)
+            </span>
+
+            <span class="nav-wip">
+                Balance Due (WIP)
+            </span>
+
+            <span class="nav-wip">
+                Forms (WIP)
+            </span>
+
+            <a href="/analytics">
+                Analytics
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="page-container">
+
+        <h1>
+            IRS Database Application
+        </h1>
+
+        <h2>
+            Relational Database Portfolio
+        </h2>
+
+        <p>
+            <strong>Zhao Li</strong>
+        </p>
+
+        <p>
+            This project demonstrates a normalized MySQL database,
+            command-line and Flask interfaces, complex SQL analytics,
+            filtering, and data visualization.
+        </p>
+
+
+        <!-- Database management -->
+        <div class="home-section">
+
+            <h3>Database Management</h3>
+
+            <ul>
+                <li>View all taxpayers</li>
+                <li>Add taxpayer</li>
+                <li>Update taxpayer</li>
+                <li>Delete taxpayer</li>
+                <li>MySQL database connection</li>
+                <li>Basic input validation and error handling</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Web application -->
+        <div class="home-section">
+
+            <h3>Web Application Features</h3>
+
+            <h4>Taxpayer and Tax Return Pages</h4>
+
+            <ul>
+                <li>Flask web interface</li>
+                <li>Taxpayer and Tax Return web pages</li>
+                <li>Filtering by Tax Year and Filing Status</li>
+                <li>Improved input validation and error messages</li>
+                <li>Protected delete logic</li>
+                <li>Transaction handling with commit and rollback</li>
+            </ul>
+
+
+            <h4>Analytics</h4>
+
+            <ul>
+                <li>Four complex SQL reports</li>
+                <li>Set operations using UNION ALL</li>
+                <li>Set membership and comparison using IN and ALL</li>
+                <li>WITH queries and subqueries</li>
+                <li>Aggregate and window functions</li>
+                <li>Interactive Tax Year and Filing Status filters</li>
+                <li>Pie, bar, and line charts</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Application Links -->
+        <div class="home-section">
+
+            <h3>
+                Explore the Application
+            </h3>
+
+            <a href="/taxpayers">
+
+                <button type="button">
+                    View Taxpayers
+                </button>
+
+            </a>
+
+
+            <a href="/taxreturns">
+
+                <button type="button">
+                    View Tax Returns
+                </button>
+
+            </a>
+
+
+            <a href="/analytics">
+
+                <button type="button">
+                    View Analytics
+                </button>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

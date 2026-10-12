@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Taxpayer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Main navigation -->
+    <nav class="top-nav">
+
+        <div class="app-title">
+            IRS Database Application
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/taxpayers">Taxpayers</a>
+            <a href="/taxreturns">Tax Returns</a>
+
+            <span class="nav-wip">Income (WIP)</span>
+            <span class="nav-wip">Deductions (WIP)</span>
+            <span class="nav-wip">Credits (WIP)</span>
+            <span class="nav-wip">Refunds (WIP)</span>
+            <span class="nav-wip">Balance Due (WIP)</span>
+            <span class="nav-wip">Forms (WIP)</span>
+
+            <a href="/analytics">Analytics</a>
+        </div>
+
+    </nav>
+
+    <div class="page-container">
+
+        <!-- CREATE: Add a new taxpayer -->
+        <h1>Create Taxpayer</h1>
+
+        {% if error_message %}
+            <p class="error-message">
+                {{ error_message }}
+            </p>
+        {% endif %}
+
+        <form method="POST">
+
+            <label>Taxpayer ID:</label>
+            <input
+                type="text"
+                name="taxpayer_id"
+                value="{{ taxpayer_id or '' }}"
+                {% if taxpayer_id_error %}style="border: 2px solid red;"{% endif %}
+                required
+            >
+
+            <br><br>
+
+            <label>First Name:</label>
+            <input
+                type="text"
+                name="first_name"
+                value="{{ first_name or '' }}"
+                required
+            >
+
+            <br><br>
+
+            <label>Middle Initial:</label>
+            <input
+                type="text"
+                name="middle_initial"
+                value="{{ middle_initial or '' }}"
+                maxlength="1"
+            >
+
+            <br><br>
+
+            <label>Last Name:</label>
+            <input
+                type="text"
+                name="last_name"
+                value="{{ last_name or '' }}"
+                required
+            >
+
+            <br><br>
+
+            <label>Street Address:</label>
+            <input
+                type="text"
+                name="street_address"
+                value="{{ street_address or '' }}"
+                required
+            >
+
+            <br><br>
+
+            <label>Apartment Number:</label>
+            <input
+                type="text"
+                name="apartment_number"
+                value="{{ apartment_number or '' }}"
+            >
+
+            <br><br>
+
+            <label>City:</label>
+            <input
+                type="text"
+                name="city"
+                value="{{ city or '' }}"
+                required
+            >
+
+            <br><br>
+
+            <label>State:</label>
+            <select name="state" required>
+
+                <option value="">Select State</option>
+
+                <option value="AZ"
+                    {% if state == "AZ" %}selected{% endif %}>
+                    Arizona
+                </option>
+
+                <option value="CA"
+                    {% if state == "CA" %}selected{% endif %}>
+                    California
+                </option>
+
+                <option value="NV"
+                    {% if state == "NV" %}selected{% endif %}>
+                    Nevada
+                </option>
+
+                <option value="OR"
+                    {% if state == "OR" %}selected{% endif %}>
+                    Oregon
+                </option>
+
+                <option value="WA"
+                    {% if state == "WA" %}selected{% endif %}>
+                    Washington
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <label>ZIP Code:</label>
+            <input
+                type="text"
+                name="zip_code"
+                value="{{ zip_code or '' }}"
+                {% if zip_code_error %}style="border: 2px solid red;"{% endif %}
+                required
+            >
+
+            <br><br>
+
+            <button type="submit">Create</button>
+
+            <a href="/taxpayers">
+                <button type="button">Back</button>
+            </a>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

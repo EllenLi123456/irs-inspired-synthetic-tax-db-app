@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Taxpayers</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Main navigation -->
+    <nav class="top-nav">
+
+        <div class="app-title">
+            IRS Database Application
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/taxpayers">Taxpayers</a>
+            <a href="/taxreturns">Tax Returns</a>
+
+            <span class="nav-wip">Income (WIP)</span>
+            <span class="nav-wip">Deductions (WIP)</span>
+            <span class="nav-wip">Credits (WIP)</span>
+            <span class="nav-wip">Refunds (WIP)</span>
+            <span class="nav-wip">Balance Due (WIP)</span>
+            <span class="nav-wip">Forms (WIP)</span>
+
+            <a href="/analytics">Analytics</a>
+        </div>
+
+    </nav>
+    
+    <div class="page-container">
+
+        <!-- Taxpayer list page -->
+        <h1>Taxpayers</h1>
+
+        <a href="/taxpayers/create">
+            <button class="create-button" type="button">
+                Create Taxpayer
+            </button>
+        </a>
+
+        <br><br>
+
+        <table>
+
+            <tr>
+                <th>Taxpayer ID</th>
+                <th>First Name</th>
+                <th>MI</th>
+                <th>Last Name</th>
+                <th>Street Address</th>
+                <th>Apartment</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZIP Code</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for taxpayer in taxpayers %}
+
+            <tr>
+                <td>{{ taxpayer.TaxpayerID }}</td>
+                <td>{{ taxpayer.FirstName }}</td>
+                <td>{{ taxpayer.MiddleInitial or "" }}</td>
+                <td>{{ taxpayer.LastName }}</td>
+                <td>{{ taxpayer.StreetAddress }}</td>
+                <td>{{ taxpayer.ApartmentNumber or "" }}</td>
+                <td>{{ taxpayer.City }}</td>
+                <td>{{ taxpayer.State }}</td>
+                <td>{{ taxpayer.ZIPCode }}</td>
+
+                <td>
+                    <a href="/taxpayers/edit/{{ taxpayer.TaxpayerID }}">
+                        <button class="edit-button" type="button">
+                            Edit
+                        </button>
+                    </a>
+
+                    <a href="/taxpayers/delete/{{ taxpayer.TaxpayerID }}">
+                        <button class="delete-button" type="button">
+                            Delete
+                        </button>
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+/* Shared application styling */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+}
+
+.page-container {
+    padding: 30px;
+    overflow-x: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: #2f3e46;
+    color: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.create-button {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.edit-button {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Top navigation */
+
+.top-nav {
+    background-color: #1f2937;
+    color: white;
+    padding: 16px 30px;
+}
+
+.app-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    align-items: center;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.nav-wip {
+    color: #9aa0a6;
+    cursor: default;
+    padding: 8px 10px;
+}
+

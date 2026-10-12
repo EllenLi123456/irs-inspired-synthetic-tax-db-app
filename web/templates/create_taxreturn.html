@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Tax Return</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Main navigation -->
+    <nav class="top-nav">
+
+        <div class="app-title">
+            IRS Database Application
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/taxpayers">Taxpayers</a>
+            <a href="/taxreturns">Tax Returns</a>
+
+            <span class="nav-wip">Income (WIP)</span>
+            <span class="nav-wip">Deductions (WIP)</span>
+            <span class="nav-wip">Credits (WIP)</span>
+            <span class="nav-wip">Refunds (WIP)</span>
+            <span class="nav-wip">Balance Due (WIP)</span>
+            <span class="nav-wip">Forms (WIP)</span>
+
+            <a href="/analytics">Analytics</a>
+        </div>
+
+    </nav>
+
+
+    <div class="page-container">
+
+        <h1>Create Tax Return</h1>
+
+        {% if error_message %}
+            <p class="error-message">
+                {{ error_message }}
+            </p>
+        {% endif %}
+
+        <form method="POST">
+
+            <label>Return ID:</label><br>
+
+            <input
+                type="number"
+                name="return_id"
+                value="{{ return_id or '' }}"
+                {% if return_id_error %}style="border: 2px solid red;"{% endif %}
+                required
+            >
+
+            <br><br>
+
+
+            <label>Taxpayer:</label><br>
+
+            <select name="taxpayer_id" required>
+
+                <option value="">
+                    Select Taxpayer
+                </option>
+
+                {% for taxpayer in taxpayers %}
+
+                    <option
+                        value="{{ taxpayer.TaxpayerID }}"
+                        {% if taxpayer_id|string == taxpayer.TaxpayerID|string %}selected{% endif %}
+                    >
+                        {{ taxpayer.TaxpayerID }}
+                        -
+                        {{ taxpayer.FirstName }}
+                        {{ taxpayer.LastName }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+            <br><br>
+
+
+            <label>Tax Year:</label><br>
+
+            <select
+                name="tax_year"
+                {% if tax_year_error %}style="border: 2px solid red;"{% endif %}
+                required
+            >
+
+                <option value="">Select Tax Year</option>
+
+                <option value="2023"
+                    {% if tax_year|string == "2023" %}selected{% endif %}>
+                    2023
+                </option>
+
+                <option value="2024"
+                    {% if tax_year|string == "2024" %}selected{% endif %}>
+                    2024
+                </option>
+
+                <option value="2025"
+                    {% if tax_year|string == "2025" %}selected{% endif %}>
+                    2025
+                </option>
+
+                <option value="2026"
+                    {% if tax_year|string == "2026" %}selected{% endif %}>
+                    2026
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>Filing Status:</label><br>
+
+            <select name="filing_status" required>
+
+                <option value="">
+                    Select Filing Status
+                </option>
+
+                <option value="Single"
+                    {% if filing_status == "Single" %}selected{% endif %}>
+                    Single
+                </option>
+
+                <option value="MFJ"
+                    {% if filing_status == "MFJ" %}selected{% endif %}>
+                    Married Filing Jointly (MFJ)
+                </option>
+
+                <option value="MFS"
+                    {% if filing_status == "MFS" %}selected{% endif %}>
+                    Married Filing Separately (MFS)
+                </option>
+
+                <option value="HOH"
+                    {% if filing_status == "HOH" %}selected{% endif %}>
+                    Head of Household (HOH)
+                </option>
+
+                <option value="QSS"
+                    {% if filing_status == "QSS" %}selected{% endif %}>
+                    Qualifying Surviving Spouse (QSS)
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <label>Filing Date:</label><br>
+
+            <input
+                type="date"
+                name="filing_date"
+                value="{{ filing_date or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <label>Total Income:</label><br>
+
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="total_income"
+                value="{{ total_income or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <label>Adjusted Gross Income:</label><br>
+
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="adjusted_gross_income"
+                value="{{ adjusted_gross_income or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <label>Total Deductions:</label><br>
+
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="total_deductions"
+                value="{{ total_deductions or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <label>Taxable Income:</label><br>
+
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="taxable_income"
+                value="{{ taxable_income or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <label>Total Nonrefundable Credits:</label><br>
+
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="total_nonrefundable_credits"
+                value="{{ total_nonrefundable_credits or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <label>Total Tax:</label><br>
+
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                name="total_tax"
+                value="{{ total_tax or '' }}"
+                required
+            >
+
+            <br><br>
+
+
+            <button class="create-button" type="submit">
+                Create Tax Return
+            </button>
+
+            <a href="/taxreturns">
+                <button type="button">
+                    Cancel
+                </button>
+            </a>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

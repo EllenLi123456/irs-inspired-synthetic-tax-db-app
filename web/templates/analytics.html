@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Main navigation -->
+    <nav class="top-nav">
+
+        <div class="app-title">
+            IRS Database Application
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/taxpayers">Taxpayers</a>
+            <a href="/taxreturns">Tax Returns</a>
+
+            <span class="nav-wip">Income (WIP)</span>
+            <span class="nav-wip">Deductions (WIP)</span>
+            <span class="nav-wip">Credits (WIP)</span>
+            <span class="nav-wip">Refunds (WIP)</span>
+            <span class="nav-wip">Balance Due (WIP)</span>
+            <span class="nav-wip">Forms (WIP)</span>
+
+            <a href="/analytics">Analytics</a>
+        </div>
+
+    </nav>
+
+    <div class="page-container">
+
+        <h1>Analytics</h1>
+
+    <p>
+        Q1. What are the refund and balance-due outcomes for tax returns?
+    </p>
+
+    <a href="/analytics/refund-balance">
+    <button type="button">
+        View Result
+    </button>
+    </a>
+
+    <br><br>
+
+    <p>
+        Q2. Which returns have the highest total deductions within each filing status?
+    </p>
+
+    <a href="/analytics/high-income">
+        <button type="button">
+            View Result
+        </button>
+
+    </a>
+
+    <br><br>
+
+    <p>
+        Q3. Do returns with higher deduction levels tend to receive larger refunds, and which returns have unusually large refunds within their deduction group?
+    </p>
+
+    <a href="/analytics/deduction-quartiles">
+        <button type="button">
+            View Result
+        </button>
+    </a>
+
+    <br><br>
+
+    <p>
+        Q4. How does income compare and accumulate over time within each filing status?
+    </p>
+
+    <a href="/analytics/filing-status-trends">
+        <button type="button">
+            View Result
+        </button>
+    </a>
+
+</body>
+
+</html>

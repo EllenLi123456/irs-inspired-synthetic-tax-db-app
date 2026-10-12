@@ -1,0 +1,35 @@
+CreditID,ReturnID,CreditType,Amount
+4001,1001,Retirement Savings Credit,2764.0
+4002,1002,Foreign Tax Credit,1371.0
+4003,1003,Retirement Savings Credit,2121.0
+4004,1004,Education Credit,2243.0
+4005,1005,Credit for Other Dependents,233.66
+4006,1005,Retirement Savings Credit,148.34
+4007,1006,Child Tax Credit,2725.0
+4008,1007,Education Credit,2979.0
+4009,1008,Child Tax Credit,2582.0
+4010,1009,Retirement Savings Credit,2201.0
+4011,1010,Credit for Other Dependents,594.44
+4012,1010,Education Credit,833.56
+4013,1011,Foreign Tax Credit,808.46
+4014,1011,Child Tax Credit,1424.54
+4015,1012,Child Tax Credit,2172.0
+4016,1013,Child Tax Credit,181.89
+4017,1013,Credit for Other Dependents,85.11
+4018,1014,Credit for Other Dependents,2066.0
+4019,1015,Credit for Other Dependents,595.3
+4020,1015,Education Credit,700.7
+4021,1016,Credit for Other Dependents,2363.0
+4022,1017,Child Tax Credit,2382.0
+4023,1018,Child Tax Credit,1880.0
+4024,1019,Retirement Savings Credit,1424.0
+4025,1020,Child Tax Credit,1077.0
+4026,1021,Credit for Other Dependents,1097.13
+4027,1021,Retirement Savings Credit,945.87
+4028,1022,Education Credit,1548.88
+4029,1022,Retirement Savings Credit,1028.12
+4030,1023,Credit for Other Dependents,485.0
+4031,1024,Child Tax Credit,367.67
+4032,1024,Retirement Savings Credit,231.33
+4033,1025,Child Tax Credit,185.18
+4034,1025,Retirement Savings Credit,262.82
