@@ -8,7 +8,7 @@ The relative paths in these scripts are resolved from the directory where the My
 
 For the simplest Windows and VS Code workflow:
 
-1. In VS Code, choose **File > Open Folder** and select `GitHub-Portfolio`.
+1. In VS Code, choose **File > Open Folder** and select the repository root folder.
 2. Choose **Terminal > New Terminal**.
 3. Confirm that the terminal is in the repository root:
 
@@ -17,10 +17,10 @@ Get-Location
 Test-Path .\database\01_schema.sql
 ```
 
-The first command should show a path ending in `GitHub-Portfolio`. The second command should return `True`. If needed, change directories first:
+The first command should show the repository root. The second command should return `True`. If needed, change directories first:
 
 ```powershell
-Set-Location -LiteralPath "C:\path\to\GitHub-Portfolio"
+Set-Location -LiteralPath "C:\path\to\repository"
 ```
 
 4. From that same terminal, start the MySQL client with local file loading enabled:

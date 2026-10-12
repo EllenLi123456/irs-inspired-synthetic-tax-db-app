@@ -1,6 +1,6 @@
 USE irs_project_db;
 
--- Launch the MySQL client from the GitHub-Portfolio repository root with
+-- Launch the MySQL client from the repository root with
 -- LOCAL INFILE enabled. These paths are relative to that launch directory.
 LOAD DATA LOCAL INFILE 'database/data/Taxpayer.csv'
 INTO TABLE Taxpayer FIELDS TERMINATED BY ',' ENCLOSED BY '"'

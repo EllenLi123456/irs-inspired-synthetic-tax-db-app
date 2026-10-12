@@ -29,18 +29,15 @@ Additional interface and validation captures are available in [`screenshots/`](s
 ## System Architecture
 
 ```mermaid
-flowchart TB
+flowchart LR
     Browser["Browser<br/>HTML, CSS, JavaScript, Chart.js<br/>Jinja-rendered pages"]
     Flask["Flask / Python<br/>Routes, form handling, validation<br/>CRUD operations and SQL analytics"]
     CLI["Python command-line client<br/>Taxpayer CRUD and validation"]
     MySQL["MySQL database<br/>8 relational tables, PKs, FKs, constraints<br/>View, procedure, function, and trigger"]
 
-    Browser -->|HTTP requests and form data| Flask
-    Flask -->|Rendered pages, tables, and chart data| Browser
-    Flask -->|Parameterized CRUD and analytics queries| MySQL
-    MySQL -->|Rows and aggregates| Flask
-    CLI -->|Parameterized CRUD queries| MySQL
-    MySQL -->|Taxpayer records| CLI
+    Browser <-->|HTTP forms / rendered pages| Flask
+    Flask <-->|CRUD, analytics / rows| MySQL
+    CLI <-->|Taxpayer CRUD / records| MySQL
 ```
 
 The browser communicates with Flask, which validates input and queries MySQL. The separate Python CLI is another database client. See the [database design and ERD](docs/database-design.md) for table-level relationships.
